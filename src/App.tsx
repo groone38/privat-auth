@@ -1,6 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -8,17 +12,22 @@ function App() {
       <header className="header">
         <ul className="header__nav">
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/posts">Blog</a>
+            <Link to="/posts">Blog</Link>
           </li>
           <li>
-            <a href="about">About</a>
+            <Link to="about">About</Link>
           </li>
         </ul>
       </header>
-      <h1>Get started</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
