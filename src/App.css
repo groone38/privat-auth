@@ -20,3 +20,8 @@
 .header__nav li:hover {
   font-weight: bold;
 }
+
+.active {
+  font-weight: bold;
+  color: blanchedalmond;
+}
