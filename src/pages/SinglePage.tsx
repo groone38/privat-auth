@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 type Props = {};
 
@@ -9,6 +9,9 @@ const SinglePage = (props: Props) => {
   const goBack = () => navigate(-1);
   return (
     <div>
+      <Link to={"/blog/new"} style={{ color: "black" }}>
+        Add blog
+      </Link>
       {id}
       <button onClick={goBack}>Back</button>
     </div>
