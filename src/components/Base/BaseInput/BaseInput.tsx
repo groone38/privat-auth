@@ -1,10 +1,28 @@
 import React from "react";
+import classes from "./BaseInput.module.scss";
 
-type Props = {};
+interface BaseInputProps {
+  label: string;
+  type: string;
+  text: string;
+  value: string;
+  error: string | undefined;
+  onChangeValues: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlure: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-function BaseInput({ label, type, text, value, onChangeValues, onBlure }: any) {
+export default React.memo(function BaseInput({
+  label,
+  type,
+  text,
+  value,
+  error,
+  onChangeValues,
+  onBlure,
+}: BaseInputProps) {
+  console.log("input", label);
   return (
-    <>
+    <div className={classes.input}>
       <label htmlFor={label}>{text}</label>
       <input
         type={type}
@@ -15,8 +33,9 @@ function BaseInput({ label, type, text, value, onChangeValues, onBlure }: any) {
         onChange={onChangeValues}
         onBlur={onBlure}
       />
-    </>
+      {error && <span>{error}</span>}
+    </div>
   );
-}
+});
 
-export default BaseInput;
+// export default BaseInput;

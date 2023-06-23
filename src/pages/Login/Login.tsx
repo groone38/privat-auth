@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./Login.module.scss";
 import {
   ValidationEmail,
@@ -7,19 +7,11 @@ import {
   ValidationPassword,
 } from "../../components/validation/Validation";
 import BaseInput from "../../components/Base/BaseInput/BaseInput";
-
-interface IUsers {
-  email: string;
-  firstName: string;
-  id: number;
-  lastName: string;
-  password: string;
-  tel: number;
-}
+import { InputsSingIn } from "../../assets/Auth/arr";
+import { IUsers, IValues } from "../../models/Auth/types";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<IValues>({
     email: "",
     password: "",
   });
@@ -38,8 +30,7 @@ const Login = () => {
           : ValidationPassword(e.target.value),
     });
   };
-
-  const onBlure = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onBlure = (e: React.ChangeEvent<HTMLInputElement>): void => {
     switch (e.target.name) {
       case "email":
         setErrors({
@@ -63,11 +54,9 @@ const Login = () => {
       errors.email === "" &&
       errors.password === ""
     ) {
-      const responce: IUsers = await fetch(
+      const responce: IUsers[] = await fetch(
         `https://649377e50da866a953667096.mockapi.io/auth/users`
       ).then((res) => res.json());
-
-      console.log(responce);
     }
   };
 
@@ -75,28 +64,18 @@ const Login = () => {
     <div className={classes.wrap}>
       <form className={classes.form} onSubmit={onSubmit}>
         <h1>Sing in</h1>
-        <div className={classes.form__input}>
+        {InputsSingIn.map((item) => (
           <BaseInput
-            label="email"
-            type="text"
+            label={item.label}
+            type={item.type}
             text="Email "
-            value={values.email}
+            value={values[item.name]}
             onChangeValues={onChangeValues}
             onBlure={onBlure}
+            error={errors[item.name]}
+            key={item.name}
           />
-          {errors.email && <span>{errors.email}</span>}
-        </div>
-        <div className={classes.form__input}>
-          <BaseInput
-            label="password"
-            type="password"
-            text="Password "
-            value={values.password}
-            onChangeValues={onChangeValues}
-            onBlure={onBlure}
-          />
-          {errors.password && <span>{errors.password}</span>}
-        </div>
+        ))}
         <div className={classes.form__btn}>
           <button type="submit" className={classes.form__btn_sing}>
             Sing in
