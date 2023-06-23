@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import classes from "./Login.module.scss";
+import classes from "./Register.module.scss";
+import { InputsSingUp } from "../../assets/Auth/arr";
+import BaseInput from "../../components/Base/BaseInput/BaseInput";
 import {
   ValidationEmail,
   ValidationError,
   ValidationPassword,
 } from "../../components/validation/Validation";
-import BaseInput from "../../components/Base/BaseInput/BaseInput";
-import { InputsSingIn } from "../../assets/Auth/arr";
-import { IUsers, IValues } from "../../models/Auth/types";
+import { IValuesSingUp } from "../../models/Auth/types";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [values, setValues] = useState<IValues>({
+const Register = () => {
+  const [values, setValues] = useState<IValuesSingUp>({
     email: "",
     password: "",
+    confirmpassword: "",
+    username: "",
   });
   const [errors, setErrors] = useState<ValidationError>({
     email: "",
     password: "",
+    confirmpassword: "",
+    username: "",
   });
   const [message, setMessage] = useState("");
 
@@ -66,7 +70,6 @@ const Login = () => {
         .then((json) => setMessage(json.message));
     }
   };
-
   return (
     <div className={classes.wrap}>
       <form className={classes.form} onSubmit={onSubmit}>
@@ -76,7 +79,7 @@ const Login = () => {
           </div>
         )}
         <h1>Sing in</h1>
-        {InputsSingIn.map((item) => (
+        {InputsSingUp.map((item) => (
           <BaseInput
             label={item.label}
             type={item.type}
@@ -93,7 +96,7 @@ const Login = () => {
             Sing in
           </button>
           <button className={classes.form__btn_register}>
-            <Link to={"/register"}>Register</Link>
+            <Link to={"/login"}>Sing in</Link>
           </button>
         </div>
       </form>
@@ -101,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -6,6 +6,8 @@ interface ValuesProps {
 export interface ValidationError {
   email?: string;
   password?: string;
+  confirmpassword?: string;
+  username?: string;
 }
 
 export function ValidationEmail(email: string) {

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Layout from "./components/Layout";
 import Login from "./pages/Login/Login";
 import PrivateRoute from "./hoc/PrivateRoute";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </Route>
       </Route>
       <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

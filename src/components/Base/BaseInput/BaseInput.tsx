@@ -11,7 +11,7 @@ interface BaseInputProps {
   onBlure: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default React.memo(function BaseInput({
+function BaseInput({
   label,
   type,
   text,
@@ -20,7 +20,6 @@ export default React.memo(function BaseInput({
   onChangeValues,
   onBlure,
 }: BaseInputProps) {
-  console.log("input", label);
   return (
     <div className={classes.input}>
       <label htmlFor={label}>{text}</label>
@@ -36,6 +35,6 @@ export default React.memo(function BaseInput({
       {error && <span>{error}</span>}
     </div>
   );
-});
+}
 
-// export default BaseInput;
+export default BaseInput;
