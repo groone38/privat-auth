@@ -38,3 +38,27 @@ export function ValidationPassword(password: string) {
 
   return error;
 }
+
+export function ValidationConfirmPassword(password: string) {
+  let error: string = "";
+  const password_pattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+
+  if (password === "") {
+    error = "Password is Required";
+  } else if (!password_pattern.test(password)) {
+    error = "Password don't match";
+  }
+
+  return error;
+}
+
+export function ValidationUserName(username: string) {
+  let error: string = "";
+
+  if (username === "") {
+    error = "Password is Required";
+  }
+
+  return error;
+}

@@ -8,7 +8,7 @@ import {
 } from "../../components/validation/Validation";
 import BaseInput from "../../components/Base/BaseInput/BaseInput";
 import { InputsSingIn } from "../../assets/Auth/arr";
-import { IUsers, IValues } from "../../models/Auth/types";
+import { IValues } from "../../models/Auth/types";
 
 const Login = () => {
   const [values, setValues] = useState<IValues>({
