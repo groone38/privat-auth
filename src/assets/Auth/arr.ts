@@ -6,12 +6,20 @@ export const InputsSingIn: InputsSingInProps[] = [
     text: "Email ",
     type: "text",
     name: "email",
+    required: "Email is Required",
+    pattern:
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+    patternText: "Email don't match",
   },
   {
     label: "password",
     text: "Password ",
     type: "password",
     name: "password",
+    required: "Password is Required",
+    pattern:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
+    patternText: "Password don't match",
   },
 ];
 
@@ -21,23 +29,38 @@ export const InputsSingUp: InputsSingUpProps[] = [
     text: "Email ",
     type: "text",
     name: "email",
+    required: "Email is Required",
+    pattern:
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+    patternText: "Email don't match",
   },
   {
     label: "password",
     text: "Password ",
     type: "password",
     name: "password",
+    required: "Password is Required",
+    pattern:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
+    patternText: "Password don't match",
   },
   {
     label: "confirm password",
     text: "Confirm Password ",
     type: "password",
     name: "confirmpassword",
+    required: "Confirm password is Required",
+    pattern:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
+    patternText: "Password don't match",
   },
   {
     label: "username",
     text: "Username ",
     type: "text",
     name: "username",
+    required: "Username is Required",
+    pattern: /^[a-z]{2,30}$/i,
+    patternText: "Username don't match",
   },
 ];

@@ -31,12 +31,14 @@
     justify-content: space-between;
     gap: 10px;
     margin-top: 30px;
-    button {
+    button,
+    a {
       padding: 11px 21px;
       border-radius: 20px;
       background-color: #fff;
       cursor: pointer;
       transition: all 0.5s;
+      user-select: none;
     }
     &_sing {
       border: 1px solid lightgray;
@@ -47,14 +49,10 @@
     }
     &_register {
       border: 1px solid #4d8cf9;
-      a {
-        color: #4d8cf9;
-      }
+      color: #4d8cf9;
       &:hover {
         background-color: #4d8cf9;
-        a {
-          color: white;
-        }
+        color: white;
       }
     }
   }

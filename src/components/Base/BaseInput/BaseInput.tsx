@@ -1,25 +1,16 @@
 import React from "react";
 import classes from "./BaseInput.module.scss";
-
+import { FieldErrors } from "react-hook-form";
 interface BaseInputProps {
   label: string;
   type: string;
   text: string;
-  value: string;
-  error: string | undefined;
-  onChangeValues: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlure: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  error: string | undefined | any;
+  register: any;
 }
 
-function BaseInput({
-  label,
-  type,
-  text,
-  value,
-  error,
-  onChangeValues,
-  onBlure,
-}: BaseInputProps) {
+function BaseInput({ label, type, text, error, register }: BaseInputProps) {
   return (
     <div className={classes.input}>
       <label htmlFor={label}>{text}</label>
@@ -28,11 +19,9 @@ function BaseInput({
         id={label}
         name={label}
         placeholder={`Enter your ${text}`}
-        value={value}
-        onChange={onChangeValues}
-        onBlur={onBlure}
+        {...register}
       />
-      {error && <span>{error}</span>}
+      {error && <span>{error.message}</span>}
     </div>
   );
 }

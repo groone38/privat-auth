@@ -1,12 +1,3 @@
-export interface IUsers {
-  email: string;
-  firstName: string;
-  id: number;
-  lastName: string;
-  password: string;
-  tel: number;
-}
-
 export interface IValues {
   email: string;
   password: string;
@@ -21,6 +12,9 @@ interface inputs {
   label: string;
   text: string;
   type: string;
+  required: string;
+  pattern: RegExp;
+  patternText: string;
 }
 
 export interface InputsSingInProps extends inputs {
