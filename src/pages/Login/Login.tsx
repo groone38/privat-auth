@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Login.module.scss";
 import BaseInput from "../../components/Base/BaseInput/BaseInput";
@@ -21,10 +21,6 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    console.log("we");
-  });
 
   const onSubmit: SubmitHandler<IValuesSingUp> = async (data) => {
     setLoading(true);
