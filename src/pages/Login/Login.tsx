@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./Login.module.scss";
 import BaseInput from "../../components/Base/BaseInput/BaseInput";
 import { InputsSingIn } from "../../assets/Auth/arr";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IValuesSingUp } from "../../models/Auth/types";
 import Loader from "../../components/Loader/Loader";
+import axios, { AxiosResponse } from "axios";
 
 const Login = () => {
   const {
@@ -19,23 +20,20 @@ const Login = () => {
       password: "",
     },
   });
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const onSubmit: SubmitHandler<IValuesSingUp> = async (data) => {
     setLoading(true);
     try {
-      await fetch(`http://localhost:8080/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
-        .then((json) => setMessage(json.message));
+      await axios.post("http://localhost:8080/auth/login", data).then((res) => {
+        localStorage.setItem("token", res.data.token);
+        setMessage("");
+        navigate("/");
+      });
     } catch (error) {
-      console.log(error);
+      setMessage(error.response.data.message);
     }
     setLoading(false);
   };
