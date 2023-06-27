@@ -14,24 +14,26 @@ const Register = () => {
     formState: { errors },
   } = useForm<IValuesSingUp>({
     mode: "all",
-    defaultValues: {
-      email: "",
-      password: "",
-    },
   });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const onSubmit: SubmitHandler<IValuesSingUp> = async (data) => {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("confirmpassword", data.confirmpassword);
+    formData.append("username", data.username);
+    formData.append("image", data.image[0]);
+    formData.append("company", data.company);
+    formData.append("tel", data.tel);
+    formData.append("about", data.about);
     setLoading(true);
     try {
       await fetch(`http://localhost:8080/auth/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       })
         .then((res) => res.json())
         .then((json) => {
@@ -52,7 +54,11 @@ const Register = () => {
       {loading ? (
         <Loader />
       ) : (
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className={classes.form}
+          onSubmit={handleSubmit(onSubmit)}
+          encType="multipart/form-data"
+        >
           {message && (
             <div className={classes.form__responce}>
               <h2>{message}</h2>
@@ -77,6 +83,8 @@ const Register = () => {
               }}
             />
           ))}
+          <input type="file" id="image" {...register("image")} />
+          <textarea id="about" {...register("about")}></textarea>
           <div className={classes.form__btn}>
             <button className={classes.form__btn_sing}>Sing up</button>
             <Link to={"/login"} className={classes.form__btn_register}>

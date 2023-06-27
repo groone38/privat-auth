@@ -6,6 +6,10 @@ export interface IValues {
 export interface IValuesSingUp extends IValues {
   confirmpassword: string;
   username: string;
+  image: any;
+  company: string;
+  tel: string;
+  about: string;
 }
 
 interface inputs {
@@ -23,4 +27,13 @@ export interface InputsSingInProps extends inputs {
 
 export interface InputsSingUpProps extends inputs {
   name: keyof IValuesSingUp;
+}
+
+export interface IUser {
+  email: string;
+  username: string;
+  image: string;
+  about: string;
+  company: string;
+  tel: string;
 }

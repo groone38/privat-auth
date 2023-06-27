@@ -63,4 +63,22 @@ export const InputsSingUp: InputsSingUpProps[] = [
     pattern: /^[a-z]{2,30}$/i,
     patternText: "Username don't match",
   },
+  {
+    label: "company",
+    text: "company ",
+    type: "text",
+    name: "company",
+    required: "company is Required",
+    pattern: /^[a-z]{2,30}$/i,
+    patternText: "Company don't match",
+  },
+  {
+    label: "tel",
+    text: "tel ",
+    type: "tel",
+    name: "tel",
+    required: "tel is Required",
+    pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+    patternText: "tel don't match",
+  },
 ];

@@ -6,7 +6,8 @@ import { InputsSingIn } from "../../assets/Auth/arr";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IValuesSingUp } from "../../models/Auth/types";
 import Loader from "../../components/Loader/Loader";
-import axios, { AxiosResponse } from "axios";
+import axios from "../../core/interseption";
+// import axios, { AxiosResponse } from "axios";
 
 const Login = () => {
   const {
@@ -27,7 +28,7 @@ const Login = () => {
   const onSubmit: SubmitHandler<IValuesSingUp> = async (data) => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:8080/auth/login", data).then((res) => {
+      await axios.post("/auth/login", data).then((res) => {
         localStorage.setItem("token", res.data.token);
         setMessage("");
         navigate("/");
