@@ -1,0 +1,57 @@
+.user {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  &_img {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    img {
+      width: 300px;
+      height: 300px;
+      border-radius: 100%;
+    }
+    p {
+      color: red;
+      text-align: center;
+    }
+  }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__textarea {
+    label {
+      display: block;
+      font-weight: bold;
+    }
+    textarea {
+      padding: 10px;
+      border: 1px solid lightgray;
+      border-radius: 20px;
+      color: gray;
+      outline: none;
+      transition: all 0.5s;
+      &:focus {
+        border: 1px solid #4d8cf9;
+      }
+    }
+  }
+
+  button {
+    padding: 11px 21px;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: 1px solid #4d8cf9;
+    color: #4d8cf9;
+    &:hover {
+      background-color: #4d8cf9;
+      color: white;
+    }
+  }
+}

@@ -1,15 +1,15 @@
-export interface IValues {
+export interface IValuesSingIn {
   email: string;
-  password: string;
-}
-
-export interface IValuesSingUp extends IValues {
-  confirmpassword: string;
   username: string;
   image: any;
   company: string;
   tel: string;
   about: string;
+}
+
+export interface IValuesSingUp extends IValuesSingIn {
+  password: string;
+  confirmpassword: string;
 }
 
 interface inputs {
@@ -22,11 +22,15 @@ interface inputs {
 }
 
 export interface InputsSingInProps extends inputs {
-  name: keyof IValues;
+  name: keyof IValuesSingUp;
 }
 
 export interface InputsSingUpProps extends inputs {
   name: keyof IValuesSingUp;
+}
+
+export interface InputsEditProps extends inputs {
+  name: keyof IValuesSingIn;
 }
 
 export interface IUser {

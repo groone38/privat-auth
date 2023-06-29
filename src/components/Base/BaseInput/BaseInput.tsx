@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./BaseInput.module.scss";
-import { FieldErrors } from "react-hook-form";
 interface BaseInputProps {
   label: string;
   type: string;
