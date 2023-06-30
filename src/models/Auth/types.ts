@@ -5,6 +5,7 @@ export interface IValuesSingIn {
   company: string;
   tel: string;
   about: string;
+  id: number;
 }
 
 export interface IValuesSingUp extends IValuesSingIn {

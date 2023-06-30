@@ -20,6 +20,7 @@ export const cartContextDefaultValue: AppContextInterface = {
     tel: "",
     company: "",
     about: "",
+    id: 0,
   },
   setValue: () => {},
   edit: false,
