@@ -1,0 +1,58 @@
+.wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 250px;
+  h1 {
+    text-align: center;
+    color: #4d8cf9;
+  }
+
+  &__responce {
+    text-align: center;
+    color: rgb(255, 0, 0);
+  }
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+    button,
+    a {
+      padding: 11px 21px;
+      border-radius: 20px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+    &_sing {
+      border: 1px solid lightgray;
+      color: grey;
+      &:hover {
+        background-color: #e5e5e5;
+      }
+    }
+    &_register {
+      border: 1px solid #4d8cf9;
+      color: #4d8cf9;
+      &:hover {
+        background-color: #4d8cf9;
+        color: white;
+      }
+    }
+  }
+}
