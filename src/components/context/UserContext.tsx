@@ -33,7 +33,7 @@ export const ValueContext = React.createContext<AppContextInterface>(
 export const ValueProvider = ({ children }: Props) => {
   const [value, setValue] = useState<IValuesSingIn>();
   const [edit, setEdit] = useState(false);
-  console.log(edit);
+
   return (
     <ValueContext.Provider
       value={{
