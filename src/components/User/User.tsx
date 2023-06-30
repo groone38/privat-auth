@@ -6,9 +6,10 @@ import { EditProfile } from "../../assets/Auth/arr";
 import BaseInput from "../Base/BaseInput/BaseInput";
 import axios from "../../core/interseption";
 import { ValueContext } from "../context/UserContext";
+import BaseTextArea from "../Base/BaseTextarea/BaseTextArea";
 
-function User({ user }: any) {
-  const edit = useContext(ValueContext);
+function User() {
+  const user = useContext(ValueContext);
   const {
     register,
     handleSubmit,
@@ -25,7 +26,6 @@ function User({ user }: any) {
   });
 
   const onSubmit: SubmitHandler<IValuesSingIn> = async (data) => {
-    console.log(data.image);
     const formData = new FormData();
     formData.append("email", data.email);
     formData.append("username", data.username);
@@ -34,7 +34,7 @@ function User({ user }: any) {
     formData.append("tel", data.tel);
     formData.append("about", data.about);
     try {
-      await axios.put("/user", formData).then(() => edit.setEdit(!edit.edit));
+      await axios.put("/user", formData).then(() => user.setEdit(!user.edit));
     } catch (error) {
       console.log(error);
     }
@@ -44,32 +44,22 @@ function User({ user }: any) {
     <form className={classes.user} onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.user_img}>
         <img src={`http://localhost:8080/${user.value?.image}`} alt="img" />
-        {edit.edit && (
+        {user.edit && (
           <>
             <input type="file" {...register("image")} />
-            {/* {errors.image && <p>Choice image!</p>} */}
+            {errors.image && <p>Choice image!</p>}
           </>
         )}
       </div>
       <div className={classes.user_info}>
         {EditProfile.map((item) => (
           <div className={classes.user_text} key={item.name}>
-            {edit.edit ? (
+            {user.edit ? (
               <BaseInput
-                label={item.label}
-                type={item.type}
-                text={item.text}
+                {...item}
                 error={errors[item.name]}
                 key={item.name}
-                register={{
-                  ...register(item.name, {
-                    required: item.required,
-                    pattern: {
-                      value: item.pattern,
-                      message: item.patternText,
-                    },
-                  }),
-                }}
+                register={register}
               />
             ) : (
               <span>
@@ -79,19 +69,14 @@ function User({ user }: any) {
             )}
           </div>
         ))}
-        <div className={classes.user__textarea}>
-          {edit.edit ? (
-            <>
-              <label htmlFor="about">About</label>
-              <textarea id="about" {...register("about")}></textarea>
-            </>
-          ) : (
-            <span>
-              <strong>About:</strong> {user.value?.about}
-            </span>
-          )}
-        </div>
-        {edit.edit && <button type="submit">Send edit</button>}
+        {user.edit ? (
+          <BaseTextArea label={"about"} register={register} text={"About"} />
+        ) : (
+          <span>
+            <strong>About:</strong> {user.value?.about}
+          </span>
+        )}
+        {user.edit && <button type="submit">Send edit</button>}
       </div>
     </form>
   );

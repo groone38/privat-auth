@@ -6,6 +6,7 @@ import { IValuesSingUp } from "../../models/Auth/types";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Loader from "../../components/Loader/Loader";
+import BaseTextArea from "../../components/Base/BaseTextarea/BaseTextArea";
 
 const Register = () => {
   const {
@@ -67,24 +68,14 @@ const Register = () => {
           <h1>Sing up</h1>
           {InputsSingUp.map((item) => (
             <BaseInput
-              label={item.label}
-              type={item.type}
-              text={item.text}
+              {...item}
               error={errors[item.name]}
               key={item.name}
-              register={{
-                ...register(item.name, {
-                  required: item.required,
-                  pattern: {
-                    value: item.pattern,
-                    message: item.patternText,
-                  },
-                }),
-              }}
+              register={register}
             />
           ))}
           <input type="file" id="image" {...register("image")} />
-          <textarea id="about" {...register("about")}></textarea>
+          <BaseTextArea label={"about"} register={register} text={"About"} />
           <div className={classes.form__btn}>
             <button className={classes.form__btn_sing}>Sing up</button>
             <Link to={"/login"} className={classes.form__btn_register}>

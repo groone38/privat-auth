@@ -54,20 +54,10 @@ const Login = () => {
             <h1>Sing in</h1>
             {InputsSingIn.map((item) => (
               <BaseInput
-                label={item.label}
-                type={item.type}
-                text={item.text}
+                {...item}
                 error={errors[item.name]}
                 key={item.name}
-                register={{
-                  ...register(item.name, {
-                    required: item.required,
-                    pattern: {
-                      value: item.pattern,
-                      message: item.patternText,
-                    },
-                  }),
-                }}
+                register={register}
               />
             ))}
             <div className={classes.form__btn}>

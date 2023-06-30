@@ -34,7 +34,7 @@ const Home = () => {
       ) : (
         <>
           {message && <h1>{message}</h1>}
-          <User user={user} />
+          <User />
         </>
       )}
     </div>

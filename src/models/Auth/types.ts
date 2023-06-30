@@ -1,7 +1,7 @@
 export interface IValuesSingIn {
   email: string;
   username: string;
-  image: any;
+  image: string;
   company: string;
   tel: string;
   about: string;
