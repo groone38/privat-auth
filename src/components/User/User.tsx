@@ -43,7 +43,10 @@ function User() {
   return (
     <form className={classes.user} onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.user_img}>
-        <img src={`http://localhost:8080/${user.value?.image}`} alt="img" />
+        <img
+          src={`https://auth-server-livid.vercel.app/${user.value?.image}`}
+          alt="img"
+        />
         {user.edit && (
           <>
             <input type="file" {...register("image")} />
