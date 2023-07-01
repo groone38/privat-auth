@@ -33,12 +33,13 @@ const Register = () => {
     formData.append("about", data.about);
     setLoading(true);
     try {
-      await axios.post("/auth/register", data).then((res) => {
+      await axios.post("/auth/register", formData).then((res) => {
         setMessage("");
         navigate("/login");
       });
     } catch (error) {
       console.log(error);
+      setMessage(error.response.data.message);
     }
     setLoading(false);
   };
