@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instans = axios.create({
-  baseURL: "http://auth-server-groone38.vercel.app",
+  baseURL: "auth-server-groone38.vercel.app",
 });
 
 instans.interceptors.request.use(
