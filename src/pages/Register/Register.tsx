@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Loader from "../../components/Loader/Loader";
 import BaseTextArea from "../../components/Base/BaseTextarea/BaseTextArea";
+import axios from "../../core/interseption";
 
 const Register = () => {
   const {
@@ -32,18 +33,10 @@ const Register = () => {
     formData.append("about", data.about);
     setLoading(true);
     try {
-      await fetch(`http://localhost:8080/auth/register`, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.message) {
-            setMessage(json.message);
-          } else {
-            navigate("/login");
-          }
-        });
+      await axios.post("/auth/register", data).then((res) => {
+        setMessage("");
+        navigate("/login");
+      });
     } catch (error) {
       console.log(error);
     }

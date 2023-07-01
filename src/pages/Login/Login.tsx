@@ -7,7 +7,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IValuesSingUp } from "../../models/Auth/types";
 import Loader from "../../components/Loader/Loader";
 import axios from "../../core/interseption";
-// import axios, { AxiosResponse } from "axios";
 
 const Login = () => {
   const {
