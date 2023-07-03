@@ -45,40 +45,52 @@ const Register = () => {
   };
 
   return (
-    <div className={classes.wrap}>
-      {loading ? (
-        <Loader />
-      ) : (
-        <form
-          className={classes.form}
-          onSubmit={handleSubmit(onSubmit)}
-          encType="multipart/form-data"
-        >
-          {message && (
-            <div className={classes.form__responce}>
-              <h2>{message}</h2>
+    <>
+      <div className={classes.warning}>
+        <h3>
+          Password patterns:
+          <br />
+          - Must contain 8-15 characters
+          <br />- Must contain both uppercase and lowercase letters (example of
+          uppercase letters - A,Z; example of lowercase letters - a,z)
+          <br />- Must contain both simbol (example of "!, ?, _" etc)
+        </h3>
+      </div>
+      <div className={classes.wrap}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <form
+            className={classes.form}
+            onSubmit={handleSubmit(onSubmit)}
+            encType="multipart/form-data"
+          >
+            {message && (
+              <div className={classes.form__responce}>
+                <h2>{message}</h2>
+              </div>
+            )}
+            <h1>Sing up</h1>
+            {InputsSingUp.map((item) => (
+              <BaseInput
+                {...item}
+                error={errors[item.name]}
+                key={item.name}
+                register={register}
+              />
+            ))}
+            {/* <input type="file" id="image" {...register("image")} /> */}
+            <BaseTextArea label={"about"} register={register} text={"About"} />
+            <div className={classes.form__btn}>
+              <button className={classes.form__btn_sing}>Sing up</button>
+              <Link to={"/login"} className={classes.form__btn_register}>
+                Sing in
+              </Link>
             </div>
-          )}
-          <h1>Sing up</h1>
-          {InputsSingUp.map((item) => (
-            <BaseInput
-              {...item}
-              error={errors[item.name]}
-              key={item.name}
-              register={register}
-            />
-          ))}
-          {/* <input type="file" id="image" {...register("image")} /> */}
-          <BaseTextArea label={"about"} register={register} text={"About"} />
-          <div className={classes.form__btn}>
-            <button className={classes.form__btn_sing}>Sing up</button>
-            <Link to={"/login"} className={classes.form__btn_register}>
-              Sing in
-            </Link>
-          </div>
-        </form>
-      )}
-    </div>
+          </form>
+        )}
+      </div>
+    </>
   );
 };
 

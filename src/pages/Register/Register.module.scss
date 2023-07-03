@@ -10,14 +10,16 @@
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+
   gap: 15px;
   border: 1px solid lightgray;
   border-radius: 20px;
   padding: 20px;
-  max-width: 250px;
+
+  grid-template-columns: auto auto auto;
   h1 {
+    grid-column: span 3;
     text-align: center;
     color: #4d8cf9;
   }
@@ -28,7 +30,7 @@
   }
   &__btn {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     gap: 10px;
     margin-top: 30px;
     button,
@@ -47,6 +49,9 @@
       }
     }
     &_register {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 1px solid #4d8cf9;
       color: #4d8cf9;
       &:hover {
@@ -55,4 +60,13 @@
       }
     }
   }
+}
+
+.warning {
+  border: 1px solid #4d8cf9;
+  color: #4d8cf9;
+  width: 50%;
+  margin: 5% auto 0;
+  border-radius: 20px;
+  padding: 20px;
 }

@@ -40,6 +40,12 @@ const Login = () => {
 
   return (
     <>
+      <div className={classes.warning}>
+        <h2>
+          The server can be a long time to load, because i use free version
+          MongooDB and Vercel!
+        </h2>
+      </div>
       <div className={classes.wrap}>
         {loading ? (
           <Loader />
