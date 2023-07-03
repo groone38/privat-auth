@@ -26,15 +26,15 @@ function User() {
   });
 
   const onSubmit: SubmitHandler<IValuesSingIn> = async (data) => {
-    const formData = new FormData();
-    formData.append("email", data.email);
-    formData.append("username", data.username);
-    formData.append("image", data.image[0]);
-    formData.append("company", data.company);
-    formData.append("tel", data.tel);
-    formData.append("about", data.about);
+    // const formData = new FormData();
+    // formData.append("email", data.email);
+    // formData.append("username", data.username);
+    // formData.append("image", data.image[0]);
+    // formData.append("company", data.company);
+    // formData.append("tel", data.tel);
+    // formData.append("about", data.about);
     try {
-      await axios.put("/user", formData).then(() => user.setEdit(!user.edit));
+      await axios.put("/user", data).then(() => user.setEdit(!user.edit));
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +42,7 @@ function User() {
 
   return (
     <form className={classes.user} onSubmit={handleSubmit(onSubmit)}>
-      <div className={classes.user_img}>
+      {/* <div className={classes.user_img}>
         <img
           src={`https://auth-server-livid.vercel.app/${user.value?.image}`}
           alt="img"
@@ -53,7 +53,7 @@ function User() {
             {errors.image && <p>Choice image!</p>}
           </>
         )}
-      </div>
+      </div> */}
       <div className={classes.user_info}>
         {EditProfile.map((item) => (
           <div className={classes.user_text} key={item.name}>

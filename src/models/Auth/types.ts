@@ -1,7 +1,7 @@
 export interface IValuesSingIn {
   email: string;
   username: string;
-  image: string;
+  // image: string;
   company: string;
   tel: string;
   about: string;
@@ -37,7 +37,7 @@ export interface InputsEditProps extends inputs {
 export interface IUser {
   email: string;
   username: string;
-  image: string;
+  // image: string;
   about: string;
   company: string;
   tel: string;

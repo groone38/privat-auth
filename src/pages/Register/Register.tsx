@@ -22,18 +22,18 @@ const Register = () => {
   const [message, setMessage] = useState("");
 
   const onSubmit: SubmitHandler<IValuesSingUp> = async (data) => {
-    const formData = new FormData();
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("confirmpassword", data.confirmpassword);
-    formData.append("username", data.username);
-    formData.append("image", data.image[0]);
-    formData.append("company", data.company);
-    formData.append("tel", data.tel);
-    formData.append("about", data.about);
+    // const formData = new FormData();
+    // formData.append("email", data.email);
+    // formData.append("password", data.password);
+    // formData.append("confirmpassword", data.confirmpassword);
+    // formData.append("username", data.username);
+    // formData.append("image", data.image[0]);
+    // formData.append("company", data.company);
+    // formData.append("tel", data.tel);
+    // formData.append("about", data.about);
     setLoading(true);
     try {
-      await axios.post("/auth/register", formData).then((res) => {
+      await axios.post("/auth/register", data).then((res) => {
         setMessage("");
         navigate("/login");
       });
@@ -68,7 +68,7 @@ const Register = () => {
               register={register}
             />
           ))}
-          <input type="file" id="image" {...register("image")} />
+          {/* <input type="file" id="image" {...register("image")} /> */}
           <BaseTextArea label={"about"} register={register} text={"About"} />
           <div className={classes.form__btn}>
             <button className={classes.form__btn_sing}>Sing up</button>
