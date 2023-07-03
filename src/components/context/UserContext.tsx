@@ -16,7 +16,7 @@ export const cartContextDefaultValue: AppContextInterface = {
   value: {
     email: "",
     username: "",
-    image: "",
+    // image: "",
     tel: "",
     company: "",
     about: "",
